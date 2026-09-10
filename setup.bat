@@ -3,7 +3,8 @@ rem One-time setup for Windows: double-click setup.bat, or run it from a termina
 rem
 rem The puzzles need only the Python standard library, so there is nothing to
 rem pip install. This finds (or installs) Python 3.8+, pins it in .venv,
-rem prepares the candidate workspace, and runs the self-test.
+rem prepares the candidate workspace, runs the self-test, and prints the
+rem command to run each puzzle on its own.
 setlocal
 cd /d "%~dp0"
 
@@ -67,7 +68,14 @@ if errorlevel 1 (
 )
 
 echo.
-echo Setup complete. Try:
+echo Setup complete.
+echo.
+echo Run any puzzle on its own as a plain Python script (from this folder):
+for %%f in (puzzles\E*.py puzzles\M*.py puzzles\H*.py) do echo   .venv\Scripts\python %%f
+echo   Tip: run .venv\Scripts\activate once, then just: python puzzles\^<file^>.py
+echo   A candidate's edited copy runs the same way: .venv\Scripts\python workspace\^<file^>.py
+echo.
+echo Or use the booth tool:
 echo   booth            list puzzles and commands
 echo   booth show easy  put a random easy puzzle on screen
 echo   booth key        staff answer key

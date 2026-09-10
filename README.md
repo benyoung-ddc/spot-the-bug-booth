@@ -35,6 +35,22 @@ If the machine has no Python, setup offers to install one: through
 [uv](https://docs.astral.sh/uv/) on macOS/Linux (no admin rights needed) or
 `winget` on Windows. Setup is safe to re-run at any time.
 
+## Running a puzzle on its own
+
+Every puzzle is a plain Python script with no booth tooling, so it runs
+directly and prints exactly what the buggy code prints. From this folder:
+
+```sh
+.venv/bin/python puzzles/E1_cold_weather_stations.py      # macOS / Linux
+.venv\Scripts\python puzzles\E1_cold_weather_stations.py  # Windows
+```
+
+Setup prints this command for all six puzzles. To skip the `.venv/...` prefix,
+activate the environment once per terminal (`source .venv/bin/activate`, or
+`.venv\Scripts\activate` on Windows), then run `python puzzles/<file>.py`. Any
+Python 3.8+ works too, e.g. `python3 puzzles/E1_cold_weather_stations.py`.
+A candidate's edited copy runs the same way, from `workspace/`.
+
 ## Running the booth
 
 Use `./booth <command>` on macOS/Linux, or `booth <command>` on Windows.

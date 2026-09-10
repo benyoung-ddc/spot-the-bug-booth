@@ -3,7 +3,8 @@
 #
 # The puzzles need only the Python standard library, so there is nothing to
 # pip install. This script finds (or installs) Python 3.8+, pins it in .venv,
-# prepares the candidate workspace, and runs the self-test.
+# prepares the candidate workspace, runs the self-test, and prints the command
+# to run each puzzle on its own.
 set -eu
 cd "$(dirname "$0")"
 
@@ -61,7 +62,18 @@ chmod +x booth
 ./booth verify
 
 echo
-echo "Setup complete. Try:"
+echo "Setup complete."
+echo
+echo "Run any puzzle on its own as a plain Python script (from this folder):"
+for level in E M H; do
+    for f in puzzles/"$level"*.py; do
+        echo "  .venv/bin/python $f"
+    done
+done
+echo "  Tip: run 'source .venv/bin/activate' once, then just: python puzzles/<file>.py"
+echo "  A candidate's edited copy runs the same way: .venv/bin/python workspace/<file>.py"
+echo
+echo "Or use the booth tool:"
 echo "  ./booth            list puzzles and commands"
 echo "  ./booth show easy  put a random easy puzzle on screen"
 echo "  ./booth key        staff answer key"
