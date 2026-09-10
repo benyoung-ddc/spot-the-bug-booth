@@ -1,0 +1,6 @@
+* text=auto
+# Stored with CRLF so they work however the repo is fetched (clone or ZIP);
+# cmd.exe mishandles goto/labels in LF-only batch files.
+*.bat -text
+*.sh text eol=lf
+booth text eol=lf

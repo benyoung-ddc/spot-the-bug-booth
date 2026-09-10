@@ -1,0 +1,11 @@
+#!/bin/sh
+# Launcher for booth.py: uses the .venv made by setup.sh, else the system Python.
+DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -x "$DIR/.venv/bin/python" ]; then
+    PY="$DIR/.venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+    PY=python3
+else
+    PY=python
+fi
+exec "$PY" "$DIR/booth.py" "$@"
